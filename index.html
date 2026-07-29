@@ -1,0 +1,385 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sherwin - Software Engineer</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Geist & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#ebe7e7",
+                    "outline-variant": "#c4c7c8",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "on-primary-fixed-variant": "#454747",
+                    "on-surface": "#111111", /* Adjusted for prompt #111111 text */
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-container-low": "#f6f3f2",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#454747",
+                    "surface": "#ffffff", /* Adjusted to pure white */
+                    "on-primary-container": "#747676",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "on-tertiary-fixed-variant": "#003ea8",
+                    "surface-dim": "#dcd9d9",
+                    "background": "#ffffff", /* Adjusted to pure white */
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#dcdddd",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "secondary": "#5d5f5f",
+                    "on-secondary-container": "#5f6161",
+                    "tertiary-fixed-dim": "#b4c5ff",
+                    "on-tertiary-fixed": "#00174b",
+                    "surface-variant": "#f5f5f5", /* Secondary sections #F5F5F5 */
+                    "on-background": "#111111",
+                    "inverse-primary": "#c6c6c7",
+                    "primary": "#2563EB", /* Accent Blue */
+                    "surface-container": "#f0edec",
+                    "tertiary-fixed": "#dbe1ff",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#e2e2e2",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-secondary-fixed": "#111111",
+                    "on-primary-fixed": "#111111",
+                    "on-secondary": "#ffffff",
+                    "outline": "#e5e7eb", /* Gray border */
+                    "surface-tint": "#2563EB",
+                    "tertiary": "#0053db",
+                    "inverse-surface": "#313030",
+                    "tertiary-container": "#ffffff",
+                    "on-tertiary-container": "#326cf4",
+                    "on-surface-variant": "#444748"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "12px", /* Overridden to 12px based on prompt */
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "element-gap": "1.5rem",
+                    "section-gap": "8rem",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Geist"],
+                    "headline-md": ["Geist"],
+                    "code": ["jetbrainsMono"],
+                    "label-md": ["Geist"],
+                    "headline-lg-mobile": ["Geist"],
+                    "headline-xl": ["Geist"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "code": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            visibility: hidden;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+            will-change: opacity, transform, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Staggered Animation */
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        .animate-float-fast {
+            animation: float 4s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        /* Animated Scroll Indicator */
+        @keyframes scroll-bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        .animate-scroll {
+            animation: scroll-bounce 2s infinite;
+        }
+
+        /* Button Interactions */
+        .btn-interactive {
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s, box-shadow 0.2s;
+        }
+        .btn-interactive:active {
+            transform: scale(0.96);
+        }
+        .btn-interactive.shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-interactive.shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(30deg) translate(-100%, -100%);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-interactive.shimmer:hover::after {
+            transform: rotate(30deg) translate(100%, 100%);
+        }
+
+        /* Nav Transition */
+        .nav-scrolled {
+            backdrop-filter: blur(16px);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-bottom-color: rgba(229, 231, 235, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface/0 transition-all duration-300 border-b border-transparent" id="main-nav">
+<div class="flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-xl tracking-tighter text-on-surface font-bold">
+                SHERWIN
+            </div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface font-bold border-b-2 border-primary pb-1 text-label-md font-label-md transition-colors" href="#home">Home</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-all duration-200 text-label-md" href="#about">About</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-all duration-200 text-label-md" href="#skills">Skills</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-all duration-200 text-label-md" href="#projects">Projects</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-all duration-200 text-label-md" href="#experience">Experience</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-all duration-200 text-label-md" href="#contact">Contact</a>
+</nav>
+<div class="hidden md:block">
+<button class="bg-on-surface text-white px-6 py-2 rounded-xl text-label-md font-label-md hover:bg-primary btn-interactive shimmer">
+                    Resume
+                </button>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-on-surface p-2 btn-interactive">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-section-gap">
+<!-- Hero Section -->
+<section class="min-h-[80vh] flex flex-col justify-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop" id="home">
+<div class="grid md:grid-cols-2 gap-element-gap items-center">
+<div class="order-2 md:order-1 flex flex-col gap-6 items-start">
+<h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface fade-in-section stagger-1 is-visible">
+                        Hi, I'm Sherwin.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg fade-in-section stagger-2 is-visible">
+                        Computer Science undergraduate and aspiring Software Engineer. I build elegant, scalable software solutions with a focus on app development and modern web technologies.
+                    </p>
+<div class="flex gap-4 pt-4 fade-in-section stagger-3 is-visible">
+<a class="bg-on-surface text-white px-8 py-3 rounded-xl font-label-md text-label-md hover:bg-primary btn-interactive shimmer flex items-center gap-2 hover-lift" href="#projects">
+                            View Projects
+                        </a>
+<a class="bg-surface text-on-surface border border-outline px-8 py-3 rounded-xl font-label-md text-label-md hover:border-primary hover:text-primary btn-interactive flex items-center gap-2 hover-lift" href="#contact">
+                            Contact Me
+                        </a>
+</div>
+</div>
+<div class="order-1 md:order-2 flex justify-center md:justify-end fade-in-section is-visible">
+<div class="relative w-48 h-48 md:w-80 md:h-80 animate-float">
+<div class="absolute -top-4 -left-4 w-24 h-24 bg-[#2563EB] rounded-xl opacity-20 -z-10 animate-float-delayed"></div>
+<div class="absolute -top-2 -right-2 w-16 h-16 bg-[#FACC15] rounded-xl opacity-30 -z-10 animate-float-fast"></div>
+<img alt="Sherwin Profile" class="w-full h-full rounded-full object-cover border-4 border-outline/30 shadow-lg relative z-10" data-alt="A highly detailed, professional headshot portrait of a modern software engineer in a minimal, high-key lighting environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSQjx8k4UPWM0ttqk3ivAk6b6tHWehs-Di9Lj3l35Egk-GB0EsNUFeXn81LdqKKKwMWIuY9fED1aRpxU-vmxmUZrlUiDFM7TWeFuQOJMZ31s6sF6pU26mkPnZAx_ZRN67bx0lghEXn-y9wZyzGUmxblkTMVPEmiL6e0WLGteMLAHXUp3HRjyzqMQgQZk0DsNLI8af4s3lQtqhGJ3h2IKaaWz8po_E3kuGHn0xJTq72OUoHPI4yjTC3iFjITo5k7RRcNLP9Bx1EwofOpA">
+</div>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-scroll hidden md:flex fade-in-section stagger-3 is-visible">
+<span class="font-label-md text-label-md text-on-surface-variant">Scroll to explore</span>
+<span class="material-symbols-outlined">arrow_downward</span>
+</div>
+</section>
+<!-- About Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-section-gap fade-in-section is-visible" id="about">
+<h2 class="font-headline-md text-headline-md mb-element-gap">About Me</h2>
+<div class="grid md:grid-cols-2 gap-12 items-start">
+<div class="fade-in-section is-visible">
+<img alt="Working setup" class="w-full aspect-[4/5] object-cover rounded-xl border border-outline shadow-sm hover-lift" data-alt="A professional lifestyle photograph of a software engineer working at a sleek, minimalist desk setup." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApmwiV_P8CltBupiWwQRj1i9nesSFMPcTk0dIHgi8t4TICqAbaul9h6JMF3O_qNhXR2Skq0uvjgvPCtoBAoSgrFRlPn9cAXqOmzYvV6mSX0GBU-MtmiXaJdpcQGJCzuXQI_CZDfBApD3vViF9jNPVd1nHmoXaIxeX0npl9hNlKtOSZkIoG6iYgeEvPdGUdbliFAu4jPeswYR948s-kmZ303YF6pwgYbHkKzg0ixkew0Ok-UmxKZs9KdwGE3Due1zeg_5SlERiC4O_aow">
+</div>
+<div class="flex flex-col gap-8">
+<div class="font-body-md text-body-md text-on-surface-variant space-y-4 fade-in-section stagger-1 is-visible">
+<p class="">
+                            I'm a passionate software developer currently pursuing my BS in Computer Science. My journey began with a curiosity for how things work, which naturally evolved into a deep interest in software architecture and artificial intelligence.
+                        </p>
+<p class="">
+                            I specialize in bridging the gap between complex backend logic and seamless user experiences. When I'm not studying or building projects, you can find me solving algorithmic puzzles or exploring the latest developments in generative AI.
+                        </p>
+</div>
+<!-- Metric Cards (Bento style) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-variant p-6 rounded-xl border border-outline hover-lift flex flex-col items-center justify-center text-center fade-in-section stagger-2 is-visible">
+<span class="font-headline-lg text-[40px] leading-tight text-on-surface counter counted" data-target="10">2</span><span class="font-headline-lg text-[40px] leading-tight text-on-surface">+</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-2">Projects Completed</span>
+</div>
+<div class="bg-surface-variant p-6 rounded-xl border border-outline hover-lift flex flex-col items-center justify-center text-center fade-in-section stagger-2 is-visible">
+<span class="font-headline-lg text-[40px] leading-tight text-on-surface counter counted" data-target="500">5</span><span class="font-headline-lg text-[40px] leading-tight text-on-surface">+</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-2">LeetCode Problems</span>
+</div>
+<div class="bg-surface-variant p-6 rounded-xl border border-outline hover-lift flex flex-col items-center justify-center text-center fade-in-section stagger-3 is-visible">
+<span class="font-headline-lg text-[40px] leading-tight text-on-surface counter counted" data-target="1000">10</span><span class="font-headline-lg text-[40px] leading-tight text-on-surface">+</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-2">GitHub Contributions</span>
+</div>
+<div class="bg-surface-variant p-6 rounded-xl border border-outline hover-lift flex flex-col items-center justify-center text-center fade-in-section stagger-3 is-visible">
+<span class="font-headline-lg text-[40px] leading-tight text-on-surface counter counted" data-target="5">5</span><span class="font-headline-lg text-[40px] leading-tight text-on-surface">+</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-2">Hackathons</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-desktop border-t border-outline-variant/20 bg-surface dark:bg-surface fade-in-section is-visible">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-element-gap">
+<div class="font-headline-md text-headline-md text-on-surface text-secondary dark:text-secondary-fixed-dim">
+                © 2024 Sherwin. Built with Engineering Excellence.
+            </div>
+<nav class="flex gap-6">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors btn-interactive" href="#top">Back to Top</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors btn-interactive" href="#">GitHub</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors btn-interactive" href="#">LinkedIn</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors btn-interactive" href="#">Twitter</a>
+</nav>
+</div>
+</footer>
+<script>
+        // Sticky Nav
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Number Counter Animation
+        function animateCounter(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            let current = 0;
+            const increment = target / 30; // 30 frames roughly
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    el.innerText = target >= 1000 ? (target/1000) + 'k' : target;
+                    clearInterval(timer);
+                } else {
+                    el.innerText = Math.ceil(current);
+                }
+            }, 30);
+        }
+
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        
+                        // Trigger counters if they exist in this section
+                        const counters = entry.target.querySelectorAll('.counter');
+                        counters.forEach(counter => {
+                            if(!counter.classList.contains('counted')) {
+                                animateCounter(counter);
+                                counter.classList.add('counted');
+                            }
+                        });
+                        
+                        // Unobserve after showing
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            document.querySelectorAll('.fade-in-section').forEach((section) => {
+                // Remove initial is-visible classes to allow scroll reveal if JS is enabled
+                if(section.id !== 'home' && !section.closest('#home')) {
+                     section.classList.remove('is-visible');
+                }
+                observer.observe(section);
+            });
+            
+            // Hero section immediate reveal
+            setTimeout(() => {
+                document.querySelectorAll('#home .fade-in-section').forEach(el => el.classList.add('is-visible'));
+            }, 100);
+        });
+    </script>
+
+
+</body></html>
