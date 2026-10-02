@@ -470,4 +470,129 @@ window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 10);
 }, { passive: true });
 </script>
+
+<!-- ── Swipe Navigation + Page Dots ── -->
+<style>
+  /* Page dots indicator */
+  #page-dots {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 100;
+    background: rgba(250,248,255,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(195,198,215,0.4);
+    box-shadow: 0 4px 20px rgba(0,74,198,0.08);
+    /* Only show on mobile */
+    display: none;
+  }
+  @media (max-width: 767px) {
+    #page-dots { display: flex; }
+  }
+  .page-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #c3c6d7;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    cursor: pointer;
+  }
+  .page-dot.active {
+    width: 22px;
+    border-radius: 999px;
+    background: #004ac6;
+  }
+
+  /* Swipe hint animation */
+  @keyframes swipe-hint {
+    0%   { transform: translateX(0); opacity: 0.7; }
+    30%  { transform: translateX(-18px); opacity: 1; }
+    60%  { transform: translateX(6px); opacity: 0.8; }
+    100% { transform: translateX(0); opacity: 0; }
+  }
+  #swipe-hint {
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #434655;
+    background: rgba(250,248,255,0.9);
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(195,198,215,0.4);
+    z-index: 100;
+    pointer-events: none;
+    display: none;
+    animation: swipe-hint 2.2s ease-in-out 1.5s both;
+  }
+  @media (max-width: 767px) {
+    #swipe-hint { display: flex; }
+  }
+
+  /* Page slide transition */
+  body.swipe-out-left  { animation: slide-out-left  0.28s ease-in both; }
+  body.swipe-out-right { animation: slide-out-right 0.28s ease-in both; }
+  @keyframes slide-out-left  { to { opacity: 0; transform: translateX(-40px); } }
+  @keyframes slide-out-right { to { opacity: 0; transform: translateX(40px); } }
+</style>
+
+<!-- Page Dots -->
+<div id="page-dots">
+  <span class="page-dot active" title="Home" onclick="window.location='index.html'"></span>
+  <span class="page-dot" title="Projects" onclick="window.location='projects.html'"></span>
+  <span class="page-dot" title="Award Gallery" onclick="window.location='awards.html'"></span>
+</div>
+
+<!-- First-visit swipe hint -->
+<div id="swipe-hint">
+  <span style="font-size:16px">👈</span> Swipe to navigate <span style="font-size:16px">👉</span>
+</div>
+
+<script>
+(function () {
+  const pages = ['index.html', 'projects.html', 'awards.html'];
+  const curIdx = 0; // Home
+
+  // Hide hint after animation
+  const hint = document.getElementById('swipe-hint');
+  if (hint) setTimeout(() => { hint.style.display = 'none'; }, 4000);
+
+  let startX = 0, startY = 0, startTime = 0;
+
+  document.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    startTime = Date.now();
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    const dt = Date.now() - startTime;
+
+    // Ignore: too slow, too short, or mostly vertical
+    if (dt > 500 || Math.abs(dx) < 55 || Math.abs(dy) > Math.abs(dx) * 0.9) return;
+
+    if (dx < 0 && curIdx < pages.length - 1) {
+      // Swipe LEFT → next page
+      document.body.classList.add('swipe-out-left');
+      setTimeout(() => { window.location.href = pages[curIdx + 1]; }, 250);
+    } else if (dx > 0 && curIdx > 0) {
+      // Swipe RIGHT → previous page
+      document.body.classList.add('swipe-out-right');
+      setTimeout(() => { window.location.href = pages[curIdx - 1]; }, 250);
+    }
+  }, { passive: true });
+})();
+</script>
 </body></html>
